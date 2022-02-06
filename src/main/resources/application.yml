@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    tomcat:
+      initSQL: SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/scaleapp?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&cachePrepStmts=true&useServerPrepStmts=true&rewriteBatchedStatements=true
+    password: root
+  main:
+    banner-mode: 'off'
+  jpa:
+    properties:
+      hibernate:
+        order_inserts: true
+        order_update: true
+        generate_statistics: true
+        jdbc:
+          batch_size: 30
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    org:
+      springframework: error
+      transaction:
+        interceptor: info
+
+server:
+  port: 8089
+  error:
+    path: /error
